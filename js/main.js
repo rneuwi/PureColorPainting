@@ -534,7 +534,17 @@ function initContactForm() {
                 submitBtn.disabled = false;
                 formStatus.textContent = '';
                 formError.hidden = false;
-                console.error('EmailJS error:', error);
+                console.error('initContactForm@submit: EmailJS send failed', {
+                    status: error && error.status,
+                    text: error && error.text,
+                    message: error && error.message,
+                    serviceId: 'service_bwjjwmh',
+                    templateId: 'template_8n9bi8e',
+                    selectedService: service.options[service.selectedIndex].text,
+                    hasPhone: !!fields.phone,
+                    messageLength: fields.message.length,
+                    error: error
+                });
                 setTimeout(function() {
                     submitBtn.textContent = originalText;
                 }, 3000);
